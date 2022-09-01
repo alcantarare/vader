@@ -79,8 +79,8 @@ y_mnl = df1['label_manual']
 y_vd = df1['label_vader']
 st.write("The following is the result of a cross-comparison between manual labeling and labeling using VADER")
 st.table(pd.crosstab(y_mnl, y_vd))
-st.write("The following accuracy results are generated")
-st.code(cr(y_mnl,y_vd))
+#st.write("The following accuracy results are generated")
+#st.code(cr(y_mnl,y_vd))
 
 #conc
 st.write("""
