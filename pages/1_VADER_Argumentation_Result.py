@@ -20,7 +20,7 @@ st.write("""
 In using VADER for this final project using review data from the Google Play Store
 """)
 st.write("This is review data from the ZOOM application which was scraped using Google Collaboratory")
-df = pd.read_csv('Data Ulasan.tsv', sep='\t')
+df = pd.read_csv('data/Data Ulasan.tsv', sep='\t')
 st.dataframe(df)
 
 #implementation
