@@ -20,7 +20,7 @@ if pro:
     st.success(scr)
     cmp = scr["compound"]
     if cmp<=0.05 and cmp>=-0.05:
-        st.succes("Neutral")
+        st.success("Neutral")
     elif cmp>=0.05:
         st.success("Positive")
     elif cmp<=-0.05:
