@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 #from sklearn.metrics import classification_report
 #cr = classification_report
-import matplotlib.pyplot as plts
+#import matplotlib.pyplot as plts
 
 sid = SentimentIntensityAnalyzer()
 
