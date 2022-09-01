@@ -19,12 +19,12 @@ if pro:
     scr = sid.polarity_scores(vas)
     st.success(scr)
     cmp = scr["compound"]
-    if cmp>=0.05:
+    if cmp>=0.05 and cmp<=0.05:
+        st.succes("Neutral")
+    elif cmp>=0.05:
         st.success("Positive")
     elif cmp<=0.05:
         st.success("Negative")
-    else:
-        st.success("Neutral")
     rr = st.button("Again")
     if rr:
         st.experimental_rerun()
