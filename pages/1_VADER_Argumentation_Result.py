@@ -54,7 +54,7 @@ st.write("""
 # Manual Labeling
 In the table below the results of the VADER labeling which have been added with manual labeling carried out by the researchers themselves.
 """)
-df1 = pd.read_csv('vader/data/CM.tsv', sep='\t')
+df1 = pd.read_csv('data/CM.tsv', sep='\t')
 st.dataframe(df1)
 st.markdown("""
 Explanation:
