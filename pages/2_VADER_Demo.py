@@ -18,12 +18,12 @@ pro = st.button("Process")
 if pro:
     scr = sid.polarity_scores(vas)
     st.success(scr)
-    cmp = round(scr["compound"], 2)
-    if cmp>=0.05 and cmp<=0.05:
+    cmp = scr["compound"]
+    if cmp<=0.05 and cmp>=-0.05:
         st.succes("Neutral")
     elif cmp>=0.05:
         st.success("Positive")
-    elif cmp<=0.05:
+    elif cmp<=-0.05:
         st.success("Negative")
     rr = st.button("Again")
     if rr:
