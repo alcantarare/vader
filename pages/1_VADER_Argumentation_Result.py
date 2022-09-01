@@ -8,8 +8,8 @@ st.set_page_config(
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import numpy as np
 import pandas as pd
-from sklearn.metrics import classification_report
-cr = classification_report
+#from sklearn.metrics import classification_report
+#cr = classification_report
 import matplotlib.pyplot as plts
 
 sid = SentimentIntensityAnalyzer()
