@@ -18,7 +18,7 @@ pro = st.button("Process")
 if pro:
     scr = sid.polarity_scores(vas)
     st.success(scr)
-    cmp = scr["compound"]
+    cmp = round(scr["compound"], 2)
     if cmp>=0.05 and cmp<=0.05:
         st.succes("Neutral")
     elif cmp>=0.05:
