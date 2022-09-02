@@ -12,7 +12,6 @@ import pandas as pd
 from PIL import Image
 
 sid = SentimentIntensityAnalyzer()
-st.sidebar.write('Hola')
 
 #intro
 st.write("""
