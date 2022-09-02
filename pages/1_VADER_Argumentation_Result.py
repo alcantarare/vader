@@ -19,7 +19,7 @@ st.write("""
 In using VADER for this final project using review data from the Google Play Store
 """)
 st.write("This is review data from the ZOOM application which was scraped using Google Collaboratory")
-df = pd.read_csv('Data Ulasan.tsv', sep='\t')
+df = pd.read_csv('data/Data Ulasan.tsv', sep='\t')
 st.dataframe(df)
 
 #implementation
@@ -53,7 +53,7 @@ st.write("""
 # Manual Labeling
 In the table below the results of the VADER labeling which have been added with manual labeling carried out by the researchers themselves.
 """)
-df1 = pd.read_csv('vader/data/CM.tsv', sep='\t')
+df1 = pd.read_csv('data/CM.tsv', sep='\t')
 st.dataframe(df1)
 st.markdown("""
 Explanation:
@@ -79,7 +79,7 @@ y_vd = df1['label_vader']
 st.write("The following is the result of a cross-comparison between manual labeling and labeling using VADER")
 st.table(pd.crosstab(y_mnl, y_vd))
 st.write("The following accuracy results are generated")
-image = Image.open('vader/img/f1.png')
+image = Image.open('img/f1.png')
 st.image(image, caption='Accuracy Results')
 
 
