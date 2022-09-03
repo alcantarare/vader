@@ -1,5 +1,7 @@
 import streamlit as st
 import csv
+import translators as trs
+import langid
 
 st.set_page_config(
     page_title="Demo",
@@ -15,20 +17,27 @@ st.write("""
 """)
 
 tab1, tab2 = st.tabs(['Sentence', 'Files'])
+
 #tab1
-vas = tab1.text_input("Enter the word or sentence you want to do sentiment analysis.")
-tab1.caption("This version is only for english")
+vas = tab1.text_input("Enter the word or sentence you want to do sentiment analysis.", value='')
+tab1.caption("This version can be up to 95 languages")
 pro = tab1.button("Process")
+detect = langid.classify(vas)
 if pro:
-    scr = sid.polarity_scores(vas)
-    tab1.success(scr)
-    cmp = scr["compound"]
-    if cmp<=0.05 and cmp>=-0.05:
-        tab1.success("Neutral")
-    elif cmp>=0.05:
-        tab1.success("Positive")
-    elif cmp<=-0.05:
-        tab1.success("Negative")
+    st.write('Detected Language : ', detect[0])
+    with st.spinner('Please Wait... Performing Analytical Calculations'):
+        if detect[0] != 'en':
+            scr = sid.polarity_scores(trs.google(vas))
+        else:
+            scr = sid.polarity_scores(vas)
+        tab1.success(scr)
+        cmp = scr["compound"]
+        if cmp<=0.05 and cmp>=-0.05:
+            tab1.success("Neutral")
+        elif cmp>=0.05:
+            tab1.success("Positive")
+        elif cmp<=-0.05:
+            tab1.success("Negative")
         
     rr = tab1.button("Again")
     if rr:
