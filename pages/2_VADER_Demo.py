@@ -2,7 +2,7 @@ import streamlit as st
 # st.write("Still Maintenance")
 import csv
 # import translators as trs
-import langid
+# import langid
 
 st.set_page_config(
     page_title="Demo",
@@ -23,9 +23,9 @@ tab1, tab2 = st.tabs(['Sentence', 'Files'])
 vas = tab1.text_input("Enter the word or sentence you want to do sentiment analysis.", value='')
 tab1.caption("This version can be up to 95 languages")
 pro = tab1.button("Process")
-detect = langid.classify(vas)
+# detect = langid.classify(vas)
 if pro:
-    st.write('Detected Language : ', detect[0])
+#     st.write('Detected Language : ', detect[0])
     with st.spinner('Please Wait... Performing Analytical Calculations'):
 #         if detect[0] != 'en':
 #             scr = sid.polarity_scores(trs.google(vas))
