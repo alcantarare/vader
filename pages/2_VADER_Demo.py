@@ -1,8 +1,8 @@
 import streamlit as st
 # st.write("Still Maintenance")
 import csv
-import translators as trs
-# import langid
+# import translators as trs
+import langid
 
 st.set_page_config(
     page_title="Demo",
