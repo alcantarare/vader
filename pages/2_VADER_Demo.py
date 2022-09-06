@@ -46,11 +46,11 @@ if pro:
 #tab2
 def convert_df(data_files):
     return data_files.to_csv().encode('utf-8')
-def analytical(data_files):
-    with st.spinner('Please Wait... Performing Labeling...'):
-        data_files['compound'] = data_files["scores"].apply(lambda score_dict:score_dict['compound'])
-        data_files['label'] = data_files['compound'].apply(lambda c: 'Positive' if c>=0.05 else 'Negative' if c<=-0.05 else 'Neutral')
-    return data_files
+# def analytical(data_files):
+#     with st.spinner('Please Wait... Performing Labeling...'):
+#         data_files['compound'] = data_files["scores"].apply(lambda score_dict:score_dict['compound'])
+#         data_files['label'] = data_files['compound'].apply(lambda c: 'Positive' if c>=0.05 else 'Negative' if c<=-0.05 else 'Neutral')
+#     return data_files
 
 file = tab2.file_uploader("Upload File TSV", type=['tsv'])
 if file is not None:
@@ -64,17 +64,20 @@ if file is not None:
         (baris))
     prf = tab2.button('Process File')
     if prf:
-        with st.spinner('Please Wait... Detecting Languange...'):
-            detectfile = langid.classify(data_files[option])
-            if detectfile != 'en':
-                data_files['translate'] = trs.google(data_files[option])
-                with st.spinner('Please Wait... Performing Analytical Calculations...'):
-                    data_files['scores'] = data_files['translate'].apply(lambda content:sid.polarity_scores(data_files['trasnlate']))
-                analytical(data_files)
-                del data_files['translate']
-            else:
-                with st.spinner('Please Wait... Performing Analytical Calculations...'):
-                    data_files['scores'] = data_files[option].apply(lambda content:sid.polarity_scores(data_files[option]))
+#         with st.spinner('Please Wait... Detecting Languange...'):
+#             detectfile = langid.classify(data_files[option])
+#             if detectfile != 'en':
+#                 data_files['translate'] = trs.google(data_files[option])
+#                 with st.spinner('Please Wait... Performing Analytical Calculations...'):
+#                     data_files['scores'] = data_files['translate'].apply(lambda content:sid.polarity_scores(data_files['trasnlate']))
+#                 analytical(data_files)
+#                 del data_files['translate']
+#             else:
+            with st.spinner('Please Wait... Performing Analytical Calculations...'):
+                data_files['scores'] = data_files[option].apply(lambda content:sid.polarity_scores(data_files[option]))
+            with st.spinner('Please Wait... Performing Labeling...'):
+                data_files['compound'] = data_files["scores"].apply(lambda score_dict:score_dict['compound'])
+                data_files['label'] = data_files['compound'].apply(lambda c: 'Positive' if c>=0.05 else 'Negative' if c<=-0.05 else 'Neutral')
             tab2.dataframe(data_files)
         file_csv = convert_df(data_files)
         tab2.download_button(
