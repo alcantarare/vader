@@ -79,13 +79,13 @@ if file is not None:
                 data_files['compound'] = data_files["scores"].apply(lambda score_dict:score_dict['compound'])
                 data_files['label'] = data_files['compound'].apply(lambda c: 'Positive' if c>=0.05 else 'Negative' if c<=-0.05 else 'Neutral')
             tab2.dataframe(data_files)
-        file_csv = convert_df(data_files)
-        tab2.download_button(
-            label="Download data as CSV",
-            data = file_csv,
-            file_name="vader.csv",
-            mime='text/csv',
-        )
+            file_csv = convert_df(data_files)
+            tab2.download_button(
+                label="Download data as CSV",
+                data = file_csv,
+                file_name="vader.csv",
+                mime='text/csv',
+            )
 else:
     tab2.caption('This version is only for english')
     tab2.write('You can convert your file into tsv. [Click Here](https://www.convertsimple.com/convert-csv-to-tsv/)')
