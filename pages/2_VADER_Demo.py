@@ -20,7 +20,7 @@ tab1, tab2 = st.tabs(['Sentence', 'Files'])
 
 #tab1
 vas = tab1.text_input("Enter the word or sentence you want to do sentiment analysis.", value='')
-tab1.caption("This version can be up to 95 languages")
+tab1.caption("This version can be used for several languages but it would be better if it used English.")
 pro = tab1.button("Process")
 detect = langid.classify(vas)
 if pro:
